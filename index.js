@@ -40,7 +40,7 @@ app.use(express.urlencoded({ extended: false, limit: '50mb' }));
 const io = new Server(server);
 
 io.on('connection', (socket) => {
-  console.log('User connected');
+  console.log('User connecteds');
 
   socket.on('getContacts', () => {
     db.all("SELECT * FROM contacts", (err, rows) => {
