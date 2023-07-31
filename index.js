@@ -26,18 +26,18 @@ const db = new sqlite3.Database(dbPath, (err) => {
 if (!exists) {
   db.run('CREATE TABLE contacts (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, phone TEXT)');
 }
-
-const corsOptions = {
-  origin: 'https://socket-client-orpin.vercel.app',
-  methods: ['GET', 'POST'],
-  credentials: true,
-};
-
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: false, limit: '50mb' }));
 
-const io = new Server(server);
+const io = new Server(server, {
+  cors: {
+    origin: 'https://socket-client-orpin.vercel.app',
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['header'],
+    credentials: true,
+  },
+});
 
 io.on('connection', (socket) => {
   console.log('User connecteds');
