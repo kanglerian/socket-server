@@ -27,7 +27,13 @@ if (!exists) {
   db.run('CREATE TABLE contacts (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, phone TEXT)');
 }
 
-app.use(cors());
+const corsOptions = {
+  origin: 'https://socket-client-orpin.vercel.app',
+  methods: ['GET', 'POST'],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: false, limit: '50mb' }));
 
