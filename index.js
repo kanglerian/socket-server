@@ -7,7 +7,7 @@ const cors = require('cors');
 const { Server } = require('socket.io')
 const sqlite3 = require('sqlite3').verbose();
 const server = http.createServer(app);
-const port = 3033;
+const port = 3098;
 
 const dbPath = path.join(__dirname, 'database.db');
 const exists = fs.existsSync(dbPath);
