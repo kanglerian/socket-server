@@ -32,8 +32,8 @@ app.use(express.urlencoded({ extended: false, limit: '50mb' }));
 
 const io = new Server(server, {
   cors: {
-    origin: 'https://socket-client-orpin.vercel.app',
-    methods: ['GET', 'POST'],
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['header'],
     credentials: true,
   },
